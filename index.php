@@ -43,7 +43,7 @@
 
     <a href="#">Nospied mani!</a>
     <a target="blank" href="www.google.lv">Meklē šeit!</a>
-    <img src="image/bilde1.jpg alt="">
+    <img src="bilde1.jpg alt="">
     
     </body>
 </body>
