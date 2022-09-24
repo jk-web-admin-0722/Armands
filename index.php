@@ -1,50 +1,100 @@
+<?php
+session_start();
+$sess=session_id();
+include ('conf/connect.php');
+include ('conf/globals.php');
+include ('get_language.php');
+
+?>
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="utf-8">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mana 1lapa</title>
-    <link type="text/css" media="all" href="style.css" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PROGRAMMING</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link type="text/css" media="all" href="style.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+<script type='text/javascript'>
+function la(x)
+{
+  setCookie('lang', x, null);
+window.location.reload(); 
+}
+function setCookie(cookieName,cookieValue,nDays)
+{
+ var today = new Date();
+ var expire = new Date();
+ if (nDays==null || nDays==0) nDays=9999;
+ expire.setTime(today.getTime() + 3600000*24*nDays);
+ document.cookie = cookieName+'='+escape(cookieValue)+';expires='+expire.toGMTString();
+}
+
+
+</script>
 </head>
+
 <body>
-    <h1>Virsraksts1</h1>
-    <h2>Virsraksts2</h2>
-    <h3>Virsraksts3</h3>
-    <h4>Virsraksts4</h4>
-    <h5>Virsraksts5</h5>
-    <h6>Virsraksts6</h6>
-    
-
-    <p>Sveiks manā lapā
-        <p>Lorem ipsum dolor sit amet, <b>consectetur adipisicing elit. Quos eaque sit, voluptate</b> nobis labore ea rerum iste porro enim suscipit recusandae. Aliquam repellendus vel doloremque temporibus voluptatum quaerat, in consequatur!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam placeat, eum enim accusamus maiores in molestias nisi quasi, ratione vitae dolorem facere incidunt cum nulla, perferendis maxime sint numquam rem?
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <i><b>Vel magni tempora quaerat velit eligendi. Voluptas</b></i> numquam magnam deserunt rem, voluptates adipisci sit qui provident sed vitae beatae, repudiandae animi praesentium?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit id, <strong>cupiditate accusamus</strong> rem perspiciatis commodi, <em>vero eaque est aut fuga adipisci veritatis</em> voluptatibus eum quis sit quaerat nam repellendus!</p>
+	<div class='section_1'>
+    	<div class='menu'>
+        	<div class='logo'>programming</div>
+            <div class='soci'>
+            	<div class='lang_sel'>
+                	<select class='lang_selector'  onchange="la(value);">
+                    	<option value='lv' class='sel_opt' <? if($_COOKIE['lang']=='lv') print 'selected';?>>LV</option>
+                        <option value='ru' class='sel_opt' <? if($_COOKIE['lang']=='ru') print 'selected';?>>RU</option>
+                        <option value='uk' class='sel_opt' <? if($_COOKIE['lang']=='uk') print 'selected';?>>EN</option>
+                    </select>
+                </div>
+            	<div class='whatsap'></div>
+                <div class='instagram'></div>
+                <div class='twitter'></div>
+                <div class='facebook'></div>
+            </div>
+        </div>
+    </div>
+       <!-- <div class='menu_links'  id="navbar">-->
+        <div id="navbar">
+        	<div class='menu_button'>
+            <button  <?php if($_GET['page']=='') print "class=link_home_active"; else print "class=link_home"; ?> onclick="window.location.href='index.php'"><?=LANG_HOME?></button></div>
+            <div class='menu_button'><button <?php if($_GET['page']=='about') print "class=link_about_active"; else print "class=link_about"; ?>  class='link_about' onclick="window.location.href='index.php?page=about'"><?=LANG_ABOUT?></button></div>
+            <div class='menu_button'><button <?php if($_GET['page']=='products') print "class=link_products_active"; else print "class=link_products"; ?>  class='link_products' onclick="window.location.href='index.php?page=products'"><?=LANG_PRODUCTS?></button></div>
             
-        <!-- Teksts, Kurš neparādīsies-->
-
-        <p></p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam vitae tenetur, suscipit eligendi laborum iure quae ducimus explicabo fugit. Ratione fugit provident officia, quibusdam praesentium ducimus voluptatem dolorem architecto adipisci?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit adipisci aut eveniet exercitationem libero quisquam nesciunt, labore minus dolor recusandae et vel fuga accusamus esse mollitia laborum expedita excepturi. Asperiores!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. A cupiditate consequatur ipsa possimus nesciunt accusamus, temporibus fugiat tenetur voluptatum illum voluptatibus obcaecati nisi expedita totam beatae sint inventore. Soluta, quae!</p>
+            <div class='menu_button'><button <?php if($_GET['page']=='jobs') print "class=link_jobs_active"; else print "class=link_jobs"; ?>  class='link_jobs' onclick="window.location.href='index.php?page=jobs'"><?=LANG_JOB?></button></div>
+            <div class='menu_button'><button <?php if($_GET['page']=='contacts') print "class=link_contacts_active"; else print "class=link_contacts"; ?>  class='link_contacts' onclick="window.location.href='index.php?page=contacts'"><?=LANG_CONTACTS?></button></div>
+        </div>
     
-        <!-- Unordered list, aizzīmēts saraksts-->
-    <ul>
-        <li>Ozols</li>
-        <li>Osis</li>
-        <li>Apse</li>
-    </ul>
-        <!-- Ordered list, numurēts saraksts-->
-    <ol>
-        <li>Ozols</li>
-        <li>Osis</li>
-        <li>Apse</li>
-    </ol>
 
-    <a href="#">Nospied mani!</a>
-    <a target="blank" href="www.google.lv">Meklē šeit!</a>
-    <img src="bilde1.jpg alt="">
+   
+     
+
+<?
+if ($_GET['page']=='about') include ('includes/about.php');
+		else if ($_GET['page']=='jobs') include ('includes/jobs.php');
+		else if ($_GET['page']=='products') include ('includes/products.php');
+		else if ($_GET['page']=='contacts') include ('includes/contacts.php');	
+		else include ('includes/homepage.php');
+?>
+
+       
     
-    </body>
+          
+   <script type='text/javascript'>
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("navbar").style.paddingTop = "10px";
+	document.getElementById("navbar").style.backgroundColor  = "#333333";
+	document.getElementById("navbar").style.borderBottomLeftRadius = "10px";
+	document.getElementById("navbar").style.borderBottomRightRadius = "10px";
+  } else {
+    document.getElementById("navbar").style.paddingTop = "150px";
+	document.getElementById("navbar").style.backgroundColor  = "transparent";
+  }
+}
+</script>         
+
 </body>
 </html>
