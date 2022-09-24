@@ -1,4 +1,5 @@
 <?php
+/* lapa atrodas uz webservera zem domēna www.programming.lv */
 session_start();
 $sess=session_id();
 include ('conf/connect.php');
